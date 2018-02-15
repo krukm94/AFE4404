@@ -36,7 +36,7 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
-#include "main.h"
+
 #include "init.h"
 #include "stm32l4xx_it.h"
 

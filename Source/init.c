@@ -9,15 +9,18 @@
 volatile uint32_t system_cnt;
 
 volatile uint8_t return_value;
+volatile uint8_t uartInitDoneFlag;
 /**
   * @brief  errorFunc
   * @param  Pointer to error massage
  */
 void _Error_Handler(char * file, int line)
 {
-	char buf_out[50];
-	sprintf(buf_out , "\r\n\r\n### ERROR in file:%s, line: %d,  system_cnt: %d [ms]" , file , line , system_cnt);
-	serviceUartWriteS(buf_out);
+	if(uartInitDoneFlag){
+		char buf_out[50];
+		sprintf(buf_out , "\r\n\r\n### ERROR in file:%s, line: %d,  system_cnt: %d [ms]" , file , line , system_cnt);
+		serviceUartWriteS(buf_out);
+	}
 	
 	while(1)
 	{
@@ -40,6 +43,7 @@ int8_t init(void)
 
 	// Service Uart is for programer
 	serviceUartInit(); 
+	uartInitDoneFlag = 1; 
 	
 	sprintf(print_buf , "\n\r### M.KRUK ### \n\r### ->L4<- ### \n\r### Compilation Time: %s\r\n file: %s, line: %d \n\r\n\r" , __TIME__, __FILE__ , __LINE__);
 	serviceUartWriteS(print_buf);
@@ -50,7 +54,7 @@ int8_t init(void)
 	//Init Timeres
 	init_timers();
 	
-	// AFR device init
+	// AFE device init
 	afeInit();
 	
 	sprintf(print_buf , "$ Init DONE\r\n");

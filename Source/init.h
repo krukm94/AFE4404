@@ -13,8 +13,9 @@
 #include "stm32l4xx_ll_gpio.h"
 
 #include "stdio.h"
+#include <stdlib.h>
 #include <cstdio>
-#include <cmath>
+
 
 #include "gpio.h"
 #include "service_uart.h"
@@ -53,15 +54,15 @@
 
 // >>>>>>>>> AFE
 
-#define AFE_I2C_ADDRESS					((uint16_t) 0x58)
+#define AFE_I2C_ADDRESS				((uint16_t) 0x58)
 
 // >>>>>>>>> definitions
-#define AFE_I2C_INSTANCE 		I2C1
+#define AFE_I2C_INSTANCE 			I2C1
 
-#define AFE_SDA_PIN				GPIO_PIN_10
-#define AFE_SCL_PIN				GPIO_PIN_9
-#define AFE_RESETZ_PIN		GPIO_PIN_0
-#define AFE_ADC_RDY_PIN		GPIO_PIN_11
+#define AFE_SDA_PIN						GPIO_PIN_10
+#define AFE_SCL_PIN						GPIO_PIN_9
+#define AFE_RESETZ_PIN				GPIO_PIN_0
+#define AFE_ADC_RDY_PIN				GPIO_PIN_11
 
 #define AFE_I2C_PORT 					GPIOA
 #define AFE_RESETZ_PORT				GPIOB

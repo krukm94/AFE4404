@@ -69,13 +69,15 @@ void afeInit(void);
 
 int8_t check_afe_communication(uint16_t device_address);
 
-void set_reg_val(uint8_t nrOfConf);
-void reg_def(void);
-
 int8_t send_reset_cmd(uint16_t device_address);
 int8_t set_reg_read(uint16_t device_address , uint8_t reg_read_value);
 int8_t set_def_conf(uint16_t device_address);
-int8_t check_reg_val(uint16_t device_address, uint8_t nrOfConf);
+int8_t check_reg_val(uint16_t device_addres);
+
+int32_t afeReadLedCur(uint8_t nrOfLed , int8_t* sign , uint8_t* inRangeFlag);
+
+void sre(float *wynik);
+void sre2(int32_t *wynik);
 
 #endif //__afe_H_
 
